@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Yogendra_CustomerCreditsReport::creditreports_list" resource="Yogendra_CustomerCreditsReport::creditreports" title="Customer Credit Report" parent="Magento_Reports::report_customers" action="Yogendra_customer_credit/creditreport/listing" module="Yogendra_CustomerCreditsReport" sortOrder="10" dependsOnModule="Yogendra_CustomerCreditsReport"/>
+    </menu>
+</config>

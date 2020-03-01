@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="customer_credit_reports_report_grid"/>
+    <body>
+        <referenceBlock name="messages">
+            <action method="addNotice">
+                <argument translate="true" name="message" xsi:type="string">For accurate reporting, be sure to refresh lifetime statistics whenever you change the time zone.</argument>
+            </action>
+        </referenceBlock>
+        <referenceBlock name="adminhtml.report.grid">
+            <arguments>
+                <argument name="id" xsi:type="string">gridProductsSold</argument>
+                <argument name="dataSource" xsi:type="object">Yogendra\CustomerCreditsReport\Model\ResourceModel\Customer\Credit\Collection\Initial</argument>
+            </arguments>
+        </referenceBlock>
+        <referenceBlock name="adminhtml.report.grid.export">
+            <arguments>
+                <argument name="exportTypes" xsi:type="array">
+                    <item name="csv" xsi:type="array">
+                        <item name="urlPath" xsi:type="string">*/*/exportCustomerCreditCsv</item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+        <referenceBlock name="adminhtml.report.grid.columnSet">
+            <arguments>
+                <argument name="id" xsi:type="string">report_customer_credit</argument>
+                <argument name="count_totals" xsi:type="string">1</argument>
+            </arguments>
+             <block class="Magento\Backend\Block\Widget\Grid\Column" as="email">
+                <arguments>
+                    <argument name="header" xsi:type="string" translate="true">Customer Email</argument>
+                    <argument name="type" xsi:type="string">text</argument>
+                    <argument name="index" xsi:type="string">customer_email</argument>
+                    <argument name="id" xsi:type="string">customer_email</argument>
+                    <argument name="column_css_class" xsi:type="string">col-id</argument>
+                    <argument name="header_css_class" xsi:type="string">col-id</argument>
+                </arguments>
+            </block>
+            <block class="Yogendra\CustomerCreditsReport\Ui\Component\BeginBalance" as="begin_balance">
+                <arguments>
+                    <argument name="header" xsi:type="string" translate="true">Opening Balance</argument>
+                    <argument name="type" xsi:type="string">text</argument>
+                    <argument name="index" xsi:type="string">begin_balance</argument>
+                    <argument name="id" xsi:type="string">begin_balance</argument>
+                    <argument name="column_css_class" xsi:type="string">col-id</argument>
+                    <argument name="header_css_class" xsi:type="string">col-id</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Backend\Block\Widget\Grid\Column" as="adjustments">
+                <arguments>
+                    <argument name="header" xsi:type="string" translate="true">Adjustments</argument>
+                    <argument name="total" xsi:type="string">sum</argument>
+                    <argument name="type" xsi:type="string">number</argument>
+                    <argument name="index" xsi:type="string">adjustments</argument>
+                    <argument name="id" xsi:type="string">adjustments</argument>
+                    <argument name="column_css_class" xsi:type="string">col-credit</argument>
+                    <argument name="header_css_class" xsi:type="string">col-credit</argument>
+                </arguments>
+            </block>
+             <block class="Yogendra\CustomerCreditsReport\Ui\Component\Topup" as="topup_refund">
+                <arguments>
+                    <argument name="header" xsi:type="string" translate="true">Topup refund</argument>
+                    <argument name="total" xsi:type="string">sum</argument>
+                    <argument name="type" xsi:type="string">number</argument>
+                    <argument name="index" xsi:type="string">topup_refund</argument>
+                    <argument name="id" xsi:type="string">topup_refund</argument>
+                    <argument name="column_css_class" xsi:type="string">col-credit</argument>
+                    <argument name="header_css_class" xsi:type="string">col-credit</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Backend\Block\Widget\Grid\Column" as="spent_credit">
+                <arguments>
+                    <argument name="header" xsi:type="string" translate="true">Consumption</argument>
+                    <argument name="total" xsi:type="string">sum</argument>
+                    <argument name="type" xsi:type="string">number</argument>
+                    <argument name="index" xsi:type="string">spent_credit</argument>
+                    <argument name="id" xsi:type="string">spent_credit</argument>
+                    <argument name="column_css_class" xsi:type="string">col-credit</argument>
+                    <argument name="header_css_class" xsi:type="string">col-credit</argument>
+                </arguments>
+            </block>
+             <block class="Yogendra\CustomerCreditsReport\Ui\Component\EndBalance" as="end_balance">
+                <arguments>
+                    <argument name="header" xsi:type="string" translate="true">Consumption</argument>
+                    <argument name="total" xsi:type="string"></argument>
+                    <argument name="type" xsi:type="string">text</argument>
+                    <argument name="index" xsi:type="string">end_balance</argument>
+                    <argument name="id" xsi:type="string">end_balance</argument>
+                    <argument name="column_css_class" xsi:type="string">col-credit</argument>
+                    <argument name="header_css_class" xsi:type="string">col-credit</argument>
+                </arguments>
+            </block>
+
+        </referenceBlock>
+    </body>
+</page>

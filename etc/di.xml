@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="your_collection_path">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">customer_report_credit</argument>
+            <argument name="resourceModel" xsi:type="string"><!-- Define your Resource model here here --></argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="report_listing_customer_credit" xsi:type="string"><!-- Define your collection here --></item>
+            </argument>
+        </arguments>
+    </type>
+</config>
